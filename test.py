@@ -17,7 +17,7 @@ def reverse_string_recursive(input_string):
 
 
 print(reverse_string_recursive("Yellowstone"))
-print(reverse_string_recursive("Yellowstone National Park"))
+print
 
 
 
