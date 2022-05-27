@@ -1,23 +1,44 @@
-# Given a string, return its reverse
+def mergeSort(arr):
+    if len(arr) > 1:
 
-def reverse_string_recursive(input_string):
+        # Finding the mid of the array
+        mid = len(arr) // 2
 
-    """
-    :param input_string: the string to be reversed
-    :return: the reversed string
-    """
-    n = len(input_string)
-    # Basecase
-    if n < 2:
-        return input_string
+        # Dividing the array elements
+        L = arr[:mid]
 
-    # Recursion
-    return (input_string[n-1] + reverse_string_recursive(input_string[:n-1]))
+        # into 2 halves
+        R = arr[mid:]
 
+        # Sorting the first half
+        L = mergeSort(L)
 
+        # Sorting the second half
+        R = mergeSort(R)
 
-print(reverse_string_recursive("Yellowstone"))
-print
+        i = j = k = 0
 
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
 
+        # Checking if any element was left
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
 
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+    return arr
+
+print(mergeSort([6,4,3,7,10,8,9,4,2]))
